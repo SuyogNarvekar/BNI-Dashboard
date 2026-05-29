@@ -120,9 +120,9 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .dist-label{font-size:12px;color:var(--text);width:100px;text-align:right;flex-shrink:0}
 .dist-bar-bg{flex:1;height:22px;background:var(--bar-bg);border-radius:4px;overflow:hidden}
 .dist-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:700;color:#fff;min-width:28px;transition:width 0.6s ease}
-.pdf-float{position:fixed;bottom:20px;right:20px;z-index:150}
-.pdf-btn{background:var(--bni-red);color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:var(--font-display);font-size:13px;letter-spacing:2px;box-shadow:0 3px 16px rgba(207,32,48,0.3);transition:transform 0.12s}
-.pdf-btn:hover{transform:translateY(-2px)}
+
+
+
 @media(max-width:600px){
   .header-inner{gap:12px}.header-logos img{height:40px}.header-logos img.abd-logo{height:30px}
   .nav-tab{padding:12px 14px;font-size:12px;letter-spacing:1px}.pt-avg-num{font-size:28px}
@@ -163,6 +163,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
     <button class="nav-tab active" data-tab="leaderboard">Leaderboard</button>
     <button class="nav-tab" data-tab="individual">Individuals</button>
     <button class="nav-tab" data-tab="stats">Stats</button>
+    <button class="nav-tab" data-tab="scoring">Scoring</button>
   </div>
   <div class="section active" id="sec-leaderboard"></div>
   <div class="section" id="sec-individual">
@@ -173,7 +174,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 </div>
 <div class="overlay" id="overlay"><div class="detail" id="detailCard"></div></div>
 <div id="tooltipEl" class="tooltip"></div>
-<div class="pdf-float"><button class="pdf-btn" onclick="window.print()">📄 EXPORT PDF</button></div>
+
 
 <script>
 function toggleTheme(){
