@@ -171,6 +171,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
     <div id="individualList"></div>
   </div>
   <div class="section" id="sec-stats"></div>
+  <div class="section" id="sec-scoring"></div>
 </div>
 <div class="overlay" id="overlay"><div class="detail" id="detailCard"></div></div>
 <div id="tooltipEl" class="tooltip"></div>
@@ -447,6 +448,64 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail()});
 
   el.innerHTML='<div class="section-title">Stats & Infographics</div><div class="stats-grid">'+h+'</div>';
   window.updateRadar();
+})();
+
+// Scoring Tab
+(function(){
+  var el=document.getElementById('sec-scoring');
+  if(!el)return;
+  var h='<div class="section-title">SCORING GUIDE</div>';
+  h+='<div style="font-size:13px;color:var(--text2);margin-bottom:16px">Every action earns points for you and your Power Team. Here is the complete breakdown.</div>';
+  var sections=[
+    {title:'DISCIPLINE & COMMITMENT',icon:'\u23F0',color:'var(--bni-red)',items:[
+      {c:'Early Arrival (Before National Anthem)',p:'100',u:'per meeting',src:'PALMS',n:'Present or Medical attendance counts. Late and Substitute do not.'},
+      {c:'Attendance in PT Meeting',p:'200',u:'per meeting',src:'Manual',n:'Follow-up with PT Captains for attendance crosscheck.'}
+    ]},
+    {title:'BUSINESS GENERATION',icon:'\uD83E\uDD1D',color:'var(--blue)',items:[
+      {c:'Visitor Invited (Qualified & Attended)',p:'300',u:'per visitor',src:'PALMS',n:'Visitor must be qualified and must attend the meeting.'},
+      {c:'Power Date Arranged',p:'200',u:'per instance',src:'Manual',n:'Based on WhatsApp group photo proof.'},
+      {c:'1-2-1 Conducted',p:'100',u:'per meeting',src:'PALMS',n:'Recorded one-to-one meetings with chapter members.'}
+    ]},
+    {title:'REVENUE IMPACT (TYFCB)',icon:'\uD83D\uDCB0',color:'var(--green)',items:[
+      {c:'Below \u20B910 Lakhs',p:'0',u:'\u2014',src:'PALMS',n:'Base threshold not met.'},
+      {c:'\u20B910L \u2013 \u20B950 Lakhs',p:'200',u:'slab',src:'PALMS',n:'Only closed and recorded TYFCB qualifies.'},
+      {c:'\u20B950L \u2013 \u20B91 Crore',p:'400',u:'slab',src:'PALMS',n:'Cumulative TYFCB for the reporting period.'},
+      {c:'\u20B91 Crore and above',p:'500',u:'slab',src:'PALMS',n:'Maximum slab.'}
+    ]},
+    {title:'ENGAGEMENT & PARTICIPATION',icon:'\uD83C\uDFA4',color:'var(--purple)',items:[
+      {c:'Themed 30 Seconds',p:'100',u:'per meeting',src:'Manual',n:'Judged by the 30-Second Judge of that week.'},
+      {c:'Top 5 Most Active Members',p:'200',u:'per meeting',src:'Manual',n:'Decided by LT/MC based on visibility, energy, and contribution.'}
+    ]},
+    {title:'LEARNING & VALUE',icon:'\uD83C\uDF93',color:'var(--blue)',items:[
+      {c:'BNI Training Attended',p:'200',u:'per training',src:'Training Report',n:'Any BNI-recognized training or workshop.'},
+      {c:'Testimonial Given',p:'200',u:'per testimonial',src:'PALMS',n:'Must be emailed to chapter to qualify. No silent appreciation.'}
+    ]},
+    {title:'GROWTH & RECOGNITION',icon:'\uD83D\uDE80',color:'var(--green)',items:[
+      {c:'Member Induction',p:'600',u:'per induction',src:'Manual',n:'Successfully inducted new member into the chapter.'},
+      {c:'Door Prize Won',p:'100',u:'per win',src:'Manual',n:'As announced in the meeting.'}
+    ]}
+  ];
+  sections.forEach(function(sec){
+    h+='<div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;box-shadow:var(--card-shadow);position:relative;overflow:hidden">';
+    h+='<div style="position:absolute;top:0;left:0;width:5px;height:100%;background:'+sec.color+'"></div>';
+    h+='<div style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--white);margin-bottom:14px;display:flex;align-items:center;gap:8px"><span style="font-size:20px">'+sec.icon+'</span>'+sec.title+'</div>';
+    sec.items.forEach(function(item){
+      h+='<div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg3);border-radius:6px;margin-bottom:6px;flex-wrap:wrap">';
+      h+='<div style="flex:1;min-width:180px"><div style="font-size:13px;font-weight:600;color:var(--text)">'+item.c+'</div>';
+      h+='<div style="font-size:11px;color:var(--text2);margin-top:2px">'+item.n+'</div></div>';
+      h+='<div style="text-align:center;min-width:70px"><div style="font-family:var(--font-display);font-size:24px;color:'+sec.color+'">'+item.p+'</div>';
+      h+='<div style="font-size:9px;color:var(--text2);letter-spacing:1px;text-transform:uppercase">'+item.u+'</div></div>';
+      h+='<div style="background:var(--bg2);padding:3px 10px;border-radius:4px;font-size:10px;color:var(--text2);letter-spacing:1px;font-weight:600">'+item.src+'</div>';
+      h+='</div>';
+    });
+    h+='</div>';
+  });
+  h+='<div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:12px;box-shadow:var(--card-shadow);text-align:center">';
+  h+='<div style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--white);margin-bottom:10px">\u2696\uFE0F HOW THE WINNER IS DECIDED</div>';
+  h+='<div style="font-size:15px;color:var(--bni-red);font-weight:700;margin-bottom:8px">Normalized Average = Total PT Points \u00F7 Number of Members</div>';
+  h+='<div style="font-size:13px;color:var(--text2);line-height:1.6">This ensures smaller Power Teams compete fairly against larger ones.<br>Zero-scoring members count in the denominator \u2014 <b style="color:var(--text)">no free riders!</b></div>';
+  h+='</div>';
+  el.innerHTML=h;
 })();
 
 // Nav
