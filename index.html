@@ -310,6 +310,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail()});
   const top121=ROSTER.map(m=>({name:m.name,c:(SCORES[m.name]?.oneToOne||0)/100})).sort((a,b)=>b.c-a.c)[0];
   const topV=ROSTER.map(m=>({name:m.name,c:(SCORES[m.name]?.visitors||0)/300})).sort((a,b)=>b.c-a.c)[0];
   const topT=ROSTER.map(m=>({name:m.name,c:(SCORES[m.name]?.testimonials||0)/200})).sort((a,b)=>b.c-a.c)[0];
+  const topRef=ROSTER.map(m=>({name:m.name,c:(SCORES[m.name]?.referrals||0)/10})).sort((a,b)=>b.c-a.c)[0];
   let h='';
 
   // 1. Leaders
@@ -318,7 +319,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail()});
     {i:'💰',l:'Top Biz Giver',n:topBiz.name,s:fL(topBiz.tyfcb),c:'var(--green)'},
     {i:'🤝',l:'Most 1-2-1s',n:top121.name,s:top121.c+' meetings',c:'var(--blue)'},
     {i:'👥',l:'Visitor Magnet',n:topV.name,s:topV.c+' visitors',c:'var(--purple)'},
-    {i:'📝',l:'Most Testimonials',n:topT.name,s:topT.c+' given',c:'var(--bni-red)'}
+    {i:'📝',l:'Most Testimonials',n:topT.name,s:topT.c+' given',c:'var(--bni-red)'},
+    {i:'🔗',l:'Most Referrals',n:topRef.name,s:topRef.c+' referrals',c:'var(--gold)'}
   ];
   h+='<div class="stat-block"><div class="stat-block-title"><span>🏆</span> Top Performers</div><div class="leader-cards">';
   leaders.forEach(x=>{h+='<div class="leader-card" onclick="showDetail(\''+esc(x.n)+'\')">'
